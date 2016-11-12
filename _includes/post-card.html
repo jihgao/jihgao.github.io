@@ -1,16 +1,16 @@
   {% assign post = include.post %}
-  <div class="col-md-4 card-post">
+  <div class="col-sm-6 col-md-4 card-post">
     <article class="thumbnail card-post__item">
       {% if post.image %}
       <img class="card-post__thumbnail" src="{{site.baseurl}}/images/{{post.image.feature}}" alt="post.image.feature"/>
       {% endif %}
       <div class="caption">
         <header class="card-post__header">
-          <h3><a class="post__title"  href="{{post.url}}">{{post.title | truncate: 55}}</a></h3>
+          <h4><a class="post__title"  href="{{post.url}}">{{post.title | truncate: 80}}</a></h4>
         </header>
         {% if post.image == nil %}
         <section class="card-post__body">
-          {{ post.summary | truncate: 700}}
+          {{ post.summary | truncate: 550}}
         </section>
         {% endif %}
       </div>
