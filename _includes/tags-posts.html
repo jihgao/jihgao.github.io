@@ -1,0 +1,15 @@
+{% for post in site.posts %}
+  {% if post.tags contains include.tag %}
+  {% assign has_post = true %}
+  {% if site.post_view == 'full' %}
+    {% include post-full.html post=post %}
+  {% elsif site.post_view == 'card' %}
+    {% include post-card.html post=post %}
+  {% endif %}
+  {% endif %}
+{% endfor %}
+{% if has_post == nil %}
+<div class="text-center">
+  No posts found
+</div>
+{% endif %}

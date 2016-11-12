@@ -1,0 +1,14 @@
+.page-nav{
+  font-size: 2rem;
+}
+
+.page-nav__item.active{
+  font-weight: bold;
+}
+
+.page-nav__link{
+  &:hover,&:active,&:link{
+    text-decoration: none;
+    color: inherit;
+  }
+}

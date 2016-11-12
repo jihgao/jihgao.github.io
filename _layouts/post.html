@@ -1,0 +1,19 @@
+---
+layout: default
+---
+
+<div class="row">
+  <div class="col-md-12">
+    <article class="panel panel-default post">
+      <header class="panel-heading">
+        <h1 class="panel-title text-right"><a class="pull-left post__title" href="{{ post.url }}">{{ page.title }}</a><span class="post-date">{{ page.date | date: "%Y-%m-%d" }}</span></h1>
+      </header>
+      <section class="panel-body">
+          {{ content }}
+      </section>
+      <section>
+        {% include disqus.html %}
+      </section>
+    </article>
+  </div>
+</div>

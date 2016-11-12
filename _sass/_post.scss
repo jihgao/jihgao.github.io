@@ -1,0 +1,24 @@
+.post__title{
+  color: $text-color;
+  display: inline-block;
+  width: calc(100% - 78px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 15px;
+  text-align: left;
+  &:hover{
+    text-decoration: none;
+  }
+}
+.post-date{
+  vertical-align: text-bottom;
+  font-size: 12px;
+  display:inline-block;
+}
+
+.card-post{}
+.card-post__item{}
+.card-post__header{}
+.card-post__body{
+  height: 70px;
+}

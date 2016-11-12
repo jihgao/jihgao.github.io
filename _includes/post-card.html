@@ -1,0 +1,11 @@
+{% assign post = include.post %}
+<div class="col-md-4 card-post">
+  <article class="panel panel-default card-post__item">
+    <header class="panel-heading card-post__header">
+      <h1 class="panel-title text-right text-nowrap"><a class="pull-left post__title"  href="{{post.url}}">{{post.title}}</a><span class="post-date">{{post.date|date: '%Y-%m-%d'}}</span></h1>
+    </header>
+    <section class="panel-body card-post__body">
+      {{ post.summary | truncate: 40 }}
+    </section>
+  </article>
+</div>
