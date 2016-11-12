@@ -1,11 +1,18 @@
-{% assign post = include.post %}
-<div class="col-md-4 card-post">
-  <article class="panel panel-default card-post__item">
-    <header class="panel-heading card-post__header">
-      <h1 class="panel-title text-right text-nowrap"><a class="pull-left post__title"  href="{{post.url}}">{{post.title}}</a><span class="post-date">{{post.date|date: '%Y-%m-%d'}}</span></h1>
-    </header>
-    <section class="panel-body card-post__body">
-      {{ post.summary | truncate: 40 }}
-    </section>
-  </article>
-</div>
+  {% assign post = include.post %}
+  <div class="col-md-4 card-post">
+    <article class="thumbnail card-post__item">
+      {% if post.image %}
+      <img class="card-post__thumbnail" src="{{site.baseurl}}/images/{{post.image.feature}}" alt="post.image.feature"/>
+      {% endif %}
+      <div class="caption">
+        <header class="card-post__header">
+          <h3><a class="post__title"  href="{{post.url}}">{{post.title | truncate: 55}}</a></h3>
+        </header>
+        {% if post.image == nil %}
+        <section class="card-post__body">
+          {{ post.summary | truncate: 700}}
+        </section>
+        {% endif %}
+      </div>
+    </article>
+  </div>

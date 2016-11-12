@@ -1,10 +1,6 @@
 .post__title{
   color: $text-color;
-  display: inline-block;
-  width: calc(100% - 78px);
   overflow: hidden;
-  text-overflow: ellipsis;
-  margin-right: 15px;
   text-align: left;
   &:hover{
     text-decoration: none;
@@ -16,8 +12,17 @@
   display:inline-block;
 }
 
-.card-post{}
-.card-post__item{}
+.card-post{
+  height: 410px;
+}
+.card-post__item{
+  height: 100%;
+  transition: none;
+}
+.card-post__item > img.card-post__thumbnail,
+.card-post__item a > img.card-post__thumbnail{
+  height: 230px;
+}
 .card-post__header{}
 .card-post__body{
   height: 70px;

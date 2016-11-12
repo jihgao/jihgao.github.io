@@ -1,8 +1,10 @@
 ---
 layout: post
-title: The N ways to start a test webserver very quickly
+title: The ways to start a test webserver very quickly
 tags: [linux]
 summary: We want to start a web server very quickly sometime in order to test something, but we do not want to set up neither Apache, nor Nigix as it need spend sometime to set them up. There are some handly ways make your life much easier.
+image:
+  feature: binary.jpg
 ---
 * Install
 

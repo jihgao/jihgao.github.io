@@ -3,6 +3,8 @@ layout: post
 title: The collection of handy shell commands
 tags: [linux]
 summary: collection of some shell commands i used to use during working
+image:
+  feature: bash.png
 ---
 * Find which process is using 3000 port
 
