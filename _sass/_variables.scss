@@ -840,8 +840,8 @@ $code-bg:                     #f9f2f4 !default;
 $kbd-color:                   #fff !default;
 $kbd-bg:                      #333 !default;
 
-$pre-bg:                      #000 !default;
-$pre-color:                   #23DE11 !default;
+$pre-bg:                      #eee !default;
+$pre-color:                   $text-color !default;
 $pre-border-color:            #ccc !default;
 $pre-scrollable-max-height:   340px !default;
 
