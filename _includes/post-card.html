@@ -2,7 +2,9 @@
   <div class="col-sm-6 col-md-4 card-post">
     <article class="thumbnail card-post__item">
       {% if post.image %}
-      <img class="card-post__thumbnail" src="{{site.baseurl}}/images/{{post.image.feature}}" alt="post.image.feature"/>
+      <div class="card-post__thumbnail-wrapper">
+        <img class="card-post__thumbnail" src="{{site.baseurl}}/images/{{post.image.feature}}" alt="post.image.feature"/>
+      </div>
       {% endif %}
       <div class="caption">
         <header class="card-post__header">
