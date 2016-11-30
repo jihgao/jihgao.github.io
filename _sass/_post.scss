@@ -25,10 +25,18 @@
   width: 100%;
   height: 230px;
   overflow: hidden;
+  position: relative;
 }
 .card-post__item .card-post__thumbnail-wrapper > img.card-post__thumbnail,
 .card-post__item a > img.card-post__thumbnail{
   width: 100%;
+}
+
+.card-post__item .card-post__thumbnail-wrapper > img.card-post__thumbnail {
+  bottom: 0;
+  margin: auto;
+  position: absolute;
+  top: 0;
 }
 .card-post__header{}
 .card-post__body{
