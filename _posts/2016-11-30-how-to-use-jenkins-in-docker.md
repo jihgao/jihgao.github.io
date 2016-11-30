@@ -16,14 +16,14 @@ image:
 
 * Use it with default options
 
-  <-- lang:bash -->
+  <!--lang: bash-->
   ```
   docker run -p 8080:8080 -p 50000:50000 jenkins
   ```
 
 * Use it with a local persistent volume
 
-  <-- lang:bash -->
+  <!--lang: bash-->
   ```
   docker run -p 8080:8080 -p 50000:50000 -v /your/home:/var/jenkins_home jenkins
   ```
@@ -31,14 +31,14 @@ image:
 
 * Use it with a volume containe
 
-  <-- lang:bash -->
+  <!--lang: bash-->
   ```
   docker run --name myjenkins -p 8080:8080 -p 50000:50000 -v /var/jenkins_home jenkins
   ```
 
 * Use it with logging by passing JVM parameters
 
-  <-- lang:bash -->
+  <!--lang: bash-->
   ```
   mkdir data
   cat > data/log.properties <<EOF
