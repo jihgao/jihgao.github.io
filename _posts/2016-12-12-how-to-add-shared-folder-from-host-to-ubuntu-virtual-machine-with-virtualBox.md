@@ -40,7 +40,7 @@ image:
   <!--lang: bash-->
   ```
   # shared_destination is where you can see the shared folder
-  gongxiang <shared_destination> vboxsf rw,gid=100,uid=1000,auto 0 0
+  <shared_foler> <shared_destination> vboxsf rw,gid=100,uid=1000,auto 0 0
   ```
 * If you want unmount the folder, run the following command:
 
