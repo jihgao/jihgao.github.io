@@ -134,3 +134,10 @@ image:
   ```
   netstat -Aan -f inet -p tcp
   ```
+
+* Debug the node modules
+
+  <!--lang: bash-->
+  ```
+  NODE_DEBUG=request node index.js
+  ```
