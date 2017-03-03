@@ -1,27 +1,27 @@
 ---
 layout: post
-title: How to use jenkins in docker
+title: 如何在docker里使用Jenkins
 tags: [jenkins]
-summary: Hand notes of how to use jenkins in docker
+summary: 记录以下在docker里使用Jenkins的方式
 image:
   feature: jenkins.png
 ---
 
 
-#### Prerequirements
-* Install [Docker](http://docker.com/)
-* Pull [the jenkins docker image](https://store.docker.com/images/d55eda09-d7f0-47b0-8780-3407f2f9142c?tab=description) by run `docker pull jenkins`
+#### 前提
+* 安装[Docker](http://docker.com/)
+* 执行`docker pull jenkins`获取[Jenkins的docker镜像](https://store.docker.com/images/d55eda09-d7f0-47b0-8780-3407f2f9142c?tab=description)
 
-#### How to use it?
+#### 使用方式
 
-* Use it with default options
+* 使用默认配置
 
   <!--lang: bash-->
   ```
   docker run -p 8080:8080 -p 50000:50000 jenkins
   ```
 
-* Use it with a local persistent volume
+* 映射本地目录
 
   <!--lang: bash-->
   ```
@@ -29,14 +29,14 @@ image:
   ```
 
 
-* Use it with a volume containe
+* 启动时选择存储container
 
   <!--lang: bash-->
   ```
   docker run --name myjenkins -p 8080:8080 -p 50000:50000 -v /var/jenkins_home jenkins
   ```
 
-* Use it with logging by passing JVM parameters
+* 启动时通过传递JVM选项开启日志
 
   <!--lang: bash-->
   ```
@@ -50,5 +50,4 @@ image:
   ```
 
 
-#### More info
-Please refer to [home page of jenkins docker image](https://store.docker.com/images/d55eda09-d7f0-47b0-8780-3407f2f9142c?tab=description)
+更多信息[点击链接](https://store.docker.com/images/d55eda09-d7f0-47b0-8780-3407f2f9142c?tab=description)
