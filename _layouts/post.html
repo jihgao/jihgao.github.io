@@ -11,9 +11,6 @@ layout: default
       <section class="post__content">
           {{ content }}
       </section>
-      <section>
-        {% include disqus.html %}
-      </section>
       {% if page.tags != nil %}
       <dl class="post-tags">
         <dd class="post-tags__label">标签:</dd>
@@ -22,10 +19,12 @@ layout: default
         {% endfor %}
       </dl>
       {% endif %}
+
+      {% include disqus.html %}
+
       <section class="post-pagination__wrapper">
         {% include post-pagination.html %}
       </section>
-      {% include disqus.html %}
     </article>
   </div>
 </div>
