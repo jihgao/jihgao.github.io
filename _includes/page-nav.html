@@ -1,9 +1,0 @@
-{% if site.nav_type == 'tag' %}
-  {% for tag in site.data.tags %}
-  <li class="page-nav__item {% if page.pgroup == tag.name %} active{% endif %}"><a class="text-capitalize text-muted page-nav__link" href="{{ site.baseurl }}/tag/{{ tag.name }}"> {{ tag.name }}</a></li>
-  {% endfor %}
-{% elsif site.nav_type == 'cat' %}
-  {% for cat in site.categories %}
-  <li class="page-nav__item {% if cat contains page.pgroup %} active{% endif %}"><a class="text-capitalize text-muted page-nav__link" href="{{ site.baseurl }}/cat/{{ cat | first }}"> {{ tag | first }}</a></li>
-  {% endfor %}
-{% endif %}

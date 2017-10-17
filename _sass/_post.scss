@@ -47,38 +47,3 @@
   justify-content: space-between;
   flex:1 1;
 }
-.post-date{
-  vertical-align: text-bottom;
-  font-size: 12px;
-  display:inline-block;
-}
-
-.card-post{
-  height: 310px;
-  margin-bottom: 15px;
-}
-.card-post__item{
-  height: 100%;
-  transition: none;
-}
-.card-post__thumbnail-wrapper{
-  width: 100%;
-  height: 230px;
-  overflow: hidden;
-  position: relative;
-}
-.card-post__item .card-post__thumbnail-wrapper > img.card-post__thumbnail,
-.card-post__item a > img.card-post__thumbnail{
-  width: 100%;
-}
-
-.card-post__item .card-post__thumbnail-wrapper > img.card-post__thumbnail {
-  bottom: 0;
-  margin: auto;
-  position: absolute;
-  top: 0;
-}
-.card-post__header{}
-.card-post__body{
-  height: 70px;
-}

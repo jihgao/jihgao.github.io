@@ -15,7 +15,7 @@ layout: default
       <dl class="post-tags">
         <dd class="post-tags__label">标签:</dd>
         {% for tag in page.tags %}
-        <dt class="post-tags__item"><a class="text-muted post-tags__item--link"> #{{ tag }}</a></dt>
+        <dt class="post-tags__item"><a class="text-muted post-tags__item--link" href="{{ site.baseurl }}/tag/{{ tag }}"> #{{ tag }}</a></dt>
         {% endfor %}
       </dl>
       {% endif %}
@@ -23,7 +23,18 @@ layout: default
       {% include disqus.html %}
 
       <section class="post-pagination__wrapper">
-        {% include post-pagination.html %}
+        <div class="pagination">
+          <div class="pull-left">
+            {% if page.next.url %}
+              上一篇：<a href="{{ page.next.url }}" class="next">{{page.next.title}}</a>
+            {% endif %}
+          </div>
+          <div class="pull-right">下一篇：
+              {% if page.previous.url %}
+                <a href="{{ page.previous.url }}" class="previous">{{page.previous.title}}</a>
+              {% endif %}
+          </div>
+        </div>
       </section>
     </article>
   </div>

@@ -8,7 +8,7 @@
     <dl class="post-tags">
       <dd class="post-tags__label">标签:</dd>
       {% for tag in post.tags %}
-      <dt class="post-tags__item"><a class="text-muted post-tags__item--link"> #{{ tag }}</a></dt>
+      <dt class="post-tags__item"><a class="text-muted post-tags__item--link" href="{{ site.baseurl }}/tag/{{ tag }}"> #{{ tag }}</a></dt>
       {% endfor %}
     </dl>
     {% endif %}
