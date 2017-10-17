@@ -55,7 +55,7 @@ baseurl:
 
 permalink: /:title/
 
-paginate: 18
+paginate: 10
 
 
 nav_type: tag

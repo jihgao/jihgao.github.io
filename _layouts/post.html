@@ -4,15 +4,26 @@ layout: default
 
 <div class="row">
   <div class="col-md-12">
-    <article class="panel panel-default post">
-      <header class="panel-heading post__header">
-        <h1 class="panel-title text-right"><a class="pull-left post__title" href="{{ post.url }}">{{ page.title }}</a><span class="post-date">{{ page.date | date: "%Y-%m-%d" }}</span></h1>
+    <article class="post">
+      <header class="post__header">
+        <h1 class="post__title"><a href="{{ page.url }}">{{ page.title }}</a></h1>
       </header>
-      <section class="panel-body post__content">
+      <section class="post__content">
           {{ content }}
       </section>
       <section>
         {% include disqus.html %}
+      </section>
+      {% if page.tags != nil %}
+      <dl class="post-tags">
+        <dd class="post-tags__label">标签:</dd>
+        {% for tag in page.tags %}
+        <dt class="post-tags__item"><a class="text-muted post-tags__item--link"> #{{ tag }}</a></dt>
+        {% endfor %}
+      </dl>
+      {% endif %}
+      <section class="post-pagination__wrapper">
+        {% include post-pagination.html %}
       </section>
     </article>
   </div>

@@ -1,0 +1,12 @@
+<div class="pagination">
+  <div class="pull-left">
+    {% if page.next.url %}
+      上一篇：<a href="{{ page.next.url }}" class="next">{{page.next.title}}</a>
+    {% endif %}
+  </div>
+  <div class="pull-right">下一篇：
+      {% if page.previous.url %}
+        <a href="{{ page.previous.url }}" class="previous">{{page.previous.title}}</a>
+      {% endif %}
+  </div>
+</div>
