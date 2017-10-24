@@ -1,0 +1,23 @@
+#sidebar{
+  position: fixed;
+  top: 0;
+  width: 300px;
+  height: 100%;
+  padding-left: 32px;
+  background: rgba(243, 249, 255, 0.32);
+}
+
+.avatar--profile{
+  display: block;
+  width: 100px;
+  height: 100px;
+  background: url("images/avatar.jpg") no-repeat center center;
+}
+
+.navigation{
+  margin-top: 16vh;
+  font-size: 2rem;
+}
+.navigation__item + .navigation__item{
+  margin-top: 1rem;
+}

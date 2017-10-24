@@ -5,6 +5,16 @@
   background: rgba(255, 255, 255, 0.6);
   padding: 15px;
   margin: 15px 15px 30px;
+  position: relative;
+}
+.post__created{
+  position: absolute;
+  top: 0;
+  right: 1rem;
+  padding: 0.5rem;
+  color: rgba(0,0,0,0.1);
+  font-weight: bolder;
+  font-size: 1.5rem;
 }
 .post__title{
   color: $text-color;

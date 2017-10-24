@@ -1,0 +1,18 @@
+@supports (display: grid) {
+  body{
+    display: grid;
+    grid-template-columns: 300px auto;
+    grid-gap: 1.2rem;
+  }
+  #sidebar{
+    grid-column: 1/2;
+    position: static;
+    height: auto;
+  }
+  #wrapper{
+    justify-self: stretch;
+  }
+  #main{
+    padding-left: 0;
+  }
+}

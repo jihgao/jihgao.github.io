@@ -1,30 +1,22 @@
 ---
 layout: default
-pgroup: home
 ---
-
-<div class="row post-list">
-  <div class="col-md-12">
-    {% for post in paginator.posts %}
-      {% include post-full.html post=post %}
-    {% endfor %}
-  </div>
+<div class="post-list">
+  {% for post in paginator.posts %}
+    {% include post-full.html post=post %}
+  {% endfor %}
 </div>
 
 <!-- Pagination links -->
 {% if paginator.previous_page != nil or paginator.next_page != nil %}
-<div class="row">
-  <div class="col-md-12">
-    <nav>
-      <ul class="pager">
-        <li class="pull-left{% if paginator.previous_page == nil %} disabled{% endif %}">
-          <a href="{{ paginator.previous_page_path }}" class="previous">上一页</a>
-        </li>
-        <li class="pull-right{% if paginator.next_page == nil %} disabled{% endif %}">
-          <a href="{{ paginator.next_page_path }}" class="next">下一页</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-</div>
+<nav>
+  <ul class="pager">
+    <li class="pull-left{% if paginator.previous_page == nil %} disabled{% endif %}">
+      <a href="{{ paginator.previous_page_path }}" class="previous">上一页</a>
+    </li>
+    <li class="pull-right{% if paginator.next_page == nil %} disabled{% endif %}">
+      <a href="{{ paginator.next_page_path }}" class="next">下一页</a>
+    </li>
+  </ul>
+</nav>
 {% endif %}

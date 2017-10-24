@@ -2,40 +2,36 @@
 layout: default
 ---
 
-<div class="row">
-  <div class="col-md-12">
-    <article class="post">
-      <header class="post__header">
-        <h1 class="post__title"><a href="{{ page.url }}">{{ page.title }}</a></h1>
-      </header>
-      <section class="post__content">
-          {{ content }}
-      </section>
-      {% if page.tags != nil %}
-      <dl class="post-tags">
-        <dd class="post-tags__label">标签:</dd>
-        {% for tag in page.tags %}
-        <dt class="post-tags__item"><a class="text-muted post-tags__item--link" href="{{ site.baseurl }}/tag/{{ tag }}"> #{{ tag }}</a></dt>
-        {% endfor %}
-      </dl>
-      {% endif %}
+<article class="post">
+  <header class="post__header">
+    <h1 class="post__title"><a href="{{ page.url }}">{{ page.title }}</a></h1>
+  </header>
+  <section class="post__content">
+      {{ content }}
+  </section>
+  {% if page.tags != nil %}
+  <dl class="post-tags">
+    <dd class="post-tags__label">标签:</dd>
+    {% for tag in page.tags %}
+    <dt class="post-tags__item"><a class="text-muted post-tags__item--link" href="{{ site.baseurl }}/tag/{{ tag }}"> #{{ tag }}</a></dt>
+    {% endfor %}
+  </dl>
+  {% endif %}
 
-      {% include comments.html %}
+  {% include comments.html %}
 
-      <section class="post-pagination__wrapper">
-        <div class="pagination">
-          <div class="pull-left">
-            {% if page.next.url %}
-              上一篇：<a href="{{ page.next.url }}" class="next">{{page.next.title}}</a>
-            {% endif %}
-          </div>
-          <div class="pull-right">下一篇：
-              {% if page.previous.url %}
-                <a href="{{ page.previous.url }}" class="previous">{{page.previous.title}}</a>
-              {% endif %}
-          </div>
-        </div>
-      </section>
-    </article>
-  </div>
-</div>
+  <section class="post-pagination__wrapper">
+    <div class="pagination">
+      <div class="pull-left">
+        {% if page.next.url %}
+          上一篇：<a href="{{ page.next.url }}" class="next">{{page.next.title}}</a>
+        {% endif %}
+      </div>
+      <div class="pull-right">下一篇：
+          {% if page.previous.url %}
+            <a href="{{ page.previous.url }}" class="previous">{{page.previous.title}}</a>
+          {% endif %}
+      </div>
+    </div>
+  </section>
+</article>
