@@ -8,7 +8,7 @@
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
     <base href="{{site.baseurl}}"/>
   </head>
-  <body>
+  <body id="{% if page.id %} {{page.id}} {% endif %}">
     {% include header.html %}
     <div class="container">
       <div id="main"  class="row">
