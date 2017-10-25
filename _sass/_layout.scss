@@ -102,5 +102,29 @@
     .module-hot-topic{
       display: none!important;
     }
+
+    & > div.module-mobile-cmt-list > div.list-footer-wrapper-wap > div{
+      display: none;
+    }
   }
+}
+
+#SOHUCS #SOHU_MAIN .module-mobile-cmt-header .mobile-header-head .header-comment-number .comment-text,
+#SOHUCS #SOHU_MAIN .module-mobile-cmt-header .mobile-header-head .header-login{
+  font-size: 1.375rem!important;
+  font-weight: normal!important;
+  font-family: inherit!important;
+}
+#SOHU_MAIN > div.module-mobile-cmt-header > div.mobile-header-head > div.header-comment-number > span.comment-number {
+    height: auto!important;
+    line-height: inherit!important;
+    padding: 0!important;
+    background-color: transparent!important;
+    border-radius: 0!important;
+    font-size: inherit!important;
+    font-family: inherit!important;
+    color: inherit!important;
+    & + .comment-number-tri{
+      display: none!important;
+    }
 }
