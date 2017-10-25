@@ -1,1 +1,27 @@
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<!--CDN links for TweenLite, CSSPlugin, and EasePack-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/plugins/CSSPlugin.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/easing/EasePack.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenLite.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+  $(function(){
+    var sidebar = $("#sidebar");
+    var lst_scroll = 0;
+    function onScroll(){
+      var current_scroll = $(document).scrollTop();
+      if( sidebar.css('position') === 'fixed'){
+        if ( current_scroll < lst_scroll ){
+          TweenLite.to("#sidebar", 1, {top:"0", ease:Power2.easeIn});
+        }else if( current_scroll > sidebar.outerHeight() + 100 ){
+          TweenLite.to("#sidebar", 1, {top:"-40px", ease:Power2.easeInOut});
+        }else{
+          TweenLite.to("#sidebar", 1, {top:"0", ease:Power2.easeIn});
+        }
+        lst_scroll = current_scroll;
+      }
+    }
+    $(window).on('scroll', _.throttle(onScroll, 50));
+  });
+</script>
