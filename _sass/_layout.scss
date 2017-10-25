@@ -15,6 +15,14 @@
 .navigation__item{
   display: block;
 }
+
+.jiathis_style{
+  right: 20px!important;
+  table td,
+  table th{
+    border: none;
+  }
+}
 @media screen and (max-width: 768px){
   .navigation__item:last-child{
     display: none!important;
@@ -47,6 +55,9 @@
     margin-left: 0;
     margin-right: 0;
   }
+  .jiathis_style{
+    right: 0px!important;
+  }
 }
 
 @supports (display: grid) {
@@ -56,6 +67,7 @@
       grid-template-columns: 300px auto;
       grid-gap: 1.2rem;
     }
+
     #main{
       padding-left: 0;
       padding-right: 15px;
