@@ -90,3 +90,17 @@
     }
   }
 }
+#SOHUCS{
+  padding-top: 40px;
+  #SOHU_MAIN {
+    .changyan-login-dialog-wrapper .platform-login{
+      .split-hr,
+      .cy-logo{
+        display: none;
+      }
+    }
+    .module-hot-topic{
+      display: none!important;
+    }
+  }
+}
