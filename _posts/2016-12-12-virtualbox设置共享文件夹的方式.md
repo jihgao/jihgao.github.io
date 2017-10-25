@@ -3,14 +3,10 @@ layout: post
 title: virtualbox设置共享文件夹的方式
 tags: [virtualbox]
 summary: 介绍怎样共享宿主主机文件夹到virtualbox ubuntu的虚拟机里
-image:
-  feature: virtualbox-shared-folder.png
 ---
 
 #### 操作步骤:
 * 打开virtualbox的设置弹框选择 *共享文件夹* 的选项卡
-
-   ![virtualbox共享文件夹]({{site.baseurl}}/images/virtualbox-shared-folder.png)
 
 * 点击添加按钮选择想要共享的文件夹，之后取一个名字
 

@@ -50,13 +50,17 @@ body{
     }
     #main{
       padding-left: 0;
+      padding-right: 15px;
       justify-self: stretch;
+      height: 100vh;
+      overflow-y: auto;
     }
     #sidebar{
       width: 300px;
       grid-column: 1/2;
       padding-left: 32px;
-      padding-top: 200px;
+      padding-top: 15vh;
+      height: 100vh;
     }
   }
 }
