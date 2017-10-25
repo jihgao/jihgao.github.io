@@ -15,9 +15,12 @@
 .navigation__item{
   display: block;
 }
-body{
-  min-width: 512px;
+@media screen and (max-width: 768px){
+  .navigation__item:last-child{
+    display: none!important;
+  }
 }
+
 @media screen and (max-width: 1023px){
   body{
     padding-top: 40px;
@@ -28,6 +31,7 @@ body{
     left:0;
     right:0;
     z-index: 999;
+    width: 100vw;
     background: rgb(243, 249, 255);
     border-bottom: 2px double #e67070;
     .navigation{
