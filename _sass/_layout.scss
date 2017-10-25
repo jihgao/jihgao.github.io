@@ -16,13 +16,6 @@
   display: block;
 }
 
-.jiathis_style{
-  right: 20px!important;
-  table td,
-  table th{
-    border: none;
-  }
-}
 @media screen and (max-width: 768px){
   .navigation__item:last-child{
     display: none!important;
@@ -55,9 +48,6 @@
     margin-left: 0;
     margin-right: 0;
   }
-  .jiathis_style{
-    right: 0px!important;
-  }
 }
 
 @supports (display: grid) {
@@ -72,7 +62,6 @@
       padding-left: 0;
       padding-right: 15px;
       justify-self: stretch;
-      height: 100vh;
       overflow-y: auto;
     }
     #sidebar{
@@ -80,7 +69,7 @@
       grid-column: 1/2;
       padding-left: 32px;
       padding-top: 15vh;
-      height: 100vh;
+      min-height: 100vh;
     }
   }
 }
