@@ -11,10 +11,8 @@
   <body id="{% if page.id %} {{page.id}} {% endif %}">
     {% include sidebar.html %}
     {% include header.html %}
-    <div id="wrapper">
-        <div id="main">
-          {{ content }}
-        </div>
+    <div id="main">
+      {{ content }}
     </div>
     {% include analytics.html %}
   </body>
