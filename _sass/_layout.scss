@@ -12,6 +12,9 @@
   padding: 0.5rem;
   white-space: nowrap;
 }
+.navigation__item{
+  display: block;
+}
 body{
   min-width: 512px;
 }
@@ -22,7 +25,8 @@ body{
   #sidebar{
     position: fixed;
     top: 0;
-    width: 100%;
+    left:0;
+    right:0;
     z-index: 999;
     background: rgb(243, 249, 255);
     border-bottom: 2px double #e67070;
@@ -30,7 +34,9 @@ body{
       display: flex;
       list-style: none;
       justify-content: space-between;
-      align-items: center;
+      .navigation__item{
+        display: block;
+      }
     }
   }
   #main .post{
