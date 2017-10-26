@@ -10,7 +10,6 @@ description: 学习笔记
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar:
-
 #
 # Flags below are optional
 #
@@ -41,7 +40,7 @@ changyan:
   prodid: prod_6852b5a963c492516e505a689c8c8e05
 # Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
 google_analytics: UA-88293974-1
-
+baidu_analytics: 2d3b4f0002172827dd2371228f225168
 # Your website URL (e.g. http://jihgao.github.io or http://www.webhulu.com)
 # Used for Sitemap.xml and your RSS feed
 url: http://www.webhulu.com
