@@ -1,0 +1,37 @@
+---
+---
+* {
+  box-sizing: border-box;
+}
+html, body{
+  margin: 0;
+  padding: 0;
+}
+.noise-tools{
+  display: block;
+  position: fixed;
+  list-style: none;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 20vw;
+  background: rgba(107, 106, 106, 0.4);
+  right: 0;
+  height: 100%;
+  padding: 20px;
+}
+
+.noise-tools__item{
+  display: flex;
+  text-align: left;
+  > span{
+    padding: 0.4em;
+    display: block;
+  }
+}
+
+.noise-tools__label,
+.noise-tools__input{
+  vertical-align: middle;
+  margin: 0 1rem;
+  padding: 0.5rem
+}

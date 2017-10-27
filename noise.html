@@ -1,0 +1,98 @@
+<html>
+  <head>
+    <title>Noise Backgrouond generator</title>
+    <link rel="stylesheet" type="text/css" href="/noise.css" />
+  </head>
+  <body>
+    <div id="main">
+      <ul class="noise-tools">
+        <li class="noise-tools__item">
+          <div class="noise-tools__label">
+            Ratio
+          </div>
+          <div class="noise-tools__input">
+            <input type="range" step="0.001" min="0.001" max="0.999" v-model="ratio"><span>{{ratio}}</span>
+          </div>
+        </li>
+        <li class="noise-tools__item">
+          <div class="noise-tools__label">
+            Animation
+          </div>
+          <div class="noise-tools__input">
+            <input type="checkbox" v-model="animation"><span>1000/{{fps}}</span>
+          </div>
+        </li>
+        <li class="noise-tools__item">
+          <div class="noise-tools__label">
+            FPS
+          </div>
+          <div class="noise-tools__input">
+            <input type="range" step="0.001" min="30" max="90" v-model="fps"><span>1000/{{fps}}</span>
+          </div>
+        </li>
+        <li class="noise-tools__item" v-for="(color, index) in colors">
+          <div class="noise-tools__label">
+            Color{{index+1}}
+          </div>
+          <div class="noise-tools__input">
+            <input type="color" v-model="color.v"/><span>&nbsp;{{color.v}}</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <script src="/scripts/vue.js"></script>
+    <script src="/scripts/noise.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+    <script type="text/javascript">
+      window.onload = function(){
+        var noise,
+            config,
+            updateBackground = _.debounce(function(options){
+              config = {ratio: options.ratio, color1: options.colors[0].v, color2: options.colors[1].v, fps: options.fps, radius: 100};
+              noise = new Noise(config);
+              if( options.animation ){
+                animation(noise, options.fps);
+              }else{
+                animation.cancel();
+              }
+            });
+        new Vue({
+          el: '#main',
+          data: {
+            ratio: 0.05,
+            fps: 60,
+            colors: [{v: "#faf1f1"}, {v:"#9875e8"}],
+            animation: true
+          },
+          updated: function(){
+            updateBackground(this.$data);
+          },
+          mounted: function(){
+            updateBackground(this.$data);
+          }
+        });
+
+        function animation(target, fps){
+          var startAt = + Date.now();
+          var last_update = startAt;
+          animation.cancel();
+          loop();
+          function loop(){
+            var now = +Date.now();
+            if( now - last_update > fps){
+              last_update = now;
+              target.redraw();
+            }
+            animation.requestAnimationFrameId = window.requestAnimationFrame(loop);
+          };
+        }
+
+        animation.cancel = function(){
+          if( animation.requestAnimationFrameId ){
+            window.cancelAnimationFrame(animation.requestAnimationFrameId);
+          }
+        };
+      };
+    </script>
+  </body>
+</html>
