@@ -30,7 +30,7 @@
             <input type="checkbox" v-model="animation"><span>1000/{{fps}}</span>
           </div>
         </li>
-        <li class="noise-tools__item">
+        <li class="noise-tools__item" v-if="animation">
           <div class="noise-tools__label">
             FPS
           </div>
