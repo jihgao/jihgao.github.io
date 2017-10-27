@@ -35,7 +35,7 @@
             FPS
           </div>
           <div class="noise-tools__input">
-            <input type="range" step="0.001" min="30" max="90" v-model="fps"><span>1000/{{fps}}</span>
+            <input type="range" step="1" min="1" max="1000" v-model="fps"><span>1000/{{fps}}</span>
           </div>
         </li>
         <li class="noise-tools__item" v-for="(color, index) in colors">
@@ -70,7 +70,7 @@
             ratio: 0.05,
             fps: 60,
             colors: [{v: "#faf1f1"}, {v:"#9875e8"}],
-            animation: true,
+            animation: false,
             size: 100
           },
           updated: function(){

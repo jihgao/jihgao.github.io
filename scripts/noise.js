@@ -54,5 +54,5 @@ Noise.prototype.draw = function (){
     }
 
   this.ctx.putImageData(this.imageCanvas, 0, 0);
-  document.body.style.background = "url(" + this.canvas.toDataURL("image/jpeg", 0.1) + ") repeat top left";
+  document.body.style.backgroundImage = "url(" + this.canvas.toDataURL("image/jpeg", 0.1) + ")";
 }
