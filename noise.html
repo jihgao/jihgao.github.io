@@ -16,6 +16,14 @@
         </li>
         <li class="noise-tools__item">
           <div class="noise-tools__label">
+            Block Size
+          </div>
+          <div class="noise-tools__input">
+            <input type="range" step="5" min="5" max="300" v-model="size"><span>{{size}}</span>
+          </div>
+        </li>
+        <li class="noise-tools__item">
+          <div class="noise-tools__label">
             Animation
           </div>
           <div class="noise-tools__input">
@@ -48,7 +56,7 @@
         var noise,
             config,
             updateBackground = _.debounce(function(options){
-              config = {ratio: options.ratio, color1: options.colors[0].v, color2: options.colors[1].v, fps: options.fps, radius: 100};
+              config = {ratio: options.ratio, color1: options.colors[0].v, color2: options.colors[1].v, fps: options.fps, radius: options.size};
               noise = new Noise(config);
               if( options.animation ){
                 animation(noise, options.fps);
@@ -62,7 +70,8 @@
             ratio: 0.05,
             fps: 60,
             colors: [{v: "#faf1f1"}, {v:"#9875e8"}],
-            animation: true
+            animation: true,
+            size: 100
           },
           updated: function(){
             updateBackground(this.$data);
