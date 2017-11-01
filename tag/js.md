@@ -2,4 +2,4 @@
 layout: tags
 ---
 
-{% include tags-posts.html tag="javascript" %}
+{% include tags-posts.html tag="JavaScript" %}
