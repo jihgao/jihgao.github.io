@@ -1,0 +1,93 @@
+---
+layout: default
+id: search-page
+---
+<div class="post-list">
+  <div id="search-result"></div>
+</div>
+<script type="text/javascript">
+  (function(){
+    var posts = [
+      {% for post in site.posts %}
+      {
+        title: '{{ post.title | escape}}',
+        url: '{{ site.url }}{{ post.url }}',
+        date: '{{post.date|date: "%Y-%m-%d"}}',
+        content: '{{ post.content | strip_html | strip_newlines | smartify | escape}}',
+        tags: '{{post.tags | array_to_sentence_string: ','}}'
+      },
+      {% endfor %}
+    ];
+
+    var count = {{site.posts | size}};
+    var i = 0;
+    var searchQuery = window.location.search;
+    searchQuery = searchQuery[0] === "?" && searchQuery.substr(1);
+    if( searchQuery ){
+      searchQuery = searchQuery.split("=");
+    }
+    if( searchQuery.length ){
+
+      for(var j=0, n=searchQuery.length;j<n; j+=2 ){
+        if( searchQuery[j] === 'query'){
+          searchQuery = decodeURI(searchQuery[j+1]);
+          break;
+        }
+      }
+    }else{
+      searchQuery = '';
+    }
+    var html = '';
+    function getTags(tags){
+      var i = 0, n;
+      tags = tags.split(",");
+      if( !tags.length ){
+        return '';
+      }else{
+        n = tags.length;
+      }
+      var html = '<dl class="post-tags"><dd class="post-tags__label">标签:</dd>';
+      for(;i<n;i++){
+        html= html + '<dt class="post-tags__item"><a class="text-muted post-tags__item--link" href="{{ site.baseurl }}/tag/' + tags[i] + '"> #' + tags[i] + '</a></dt>';
+      }
+      html += '</dl>';
+      return html;
+    }
+
+    var filteredPosts = [];
+    var i = 0;
+    var k = 0;
+    var m = 0;
+
+    if( !searchQuery ){
+        filteredPosts = posts;
+    }else{
+      document.title = '包含"' + searchQuery + '"的文章';
+      for(;i<count;i++){
+        if( searchQuery && (posts[i].title.indexOf(searchQuery) > -1 || posts[i].content.indexOf(searchQuery) > -1)){
+          filteredPosts.push(posts[i]);
+        }
+      }
+    }
+    m = filteredPosts.length;
+
+    if( !m ){
+      html = '<div class="page"></div>';
+    }else{
+      for(; k < m; k++){
+        html += '<article class="post">\
+          <header>\
+            <h1 class="post__title"><a href="' + filteredPosts[k].url + '">' +  filteredPosts[k].title + '</a></h1>\
+            <small class="post__created"> ' + filteredPosts[k].date + ' </small>\
+          </header>\
+          <section class="post__content">\
+            <p>' + filteredPosts[k].content.substr(0, 130) + '</p>\
+            <p class="text-right"> <a href="' + filteredPosts[k].url + '"><span >阅读全文 &raquo; </span></a></p>\
+            <hr>' +  getTags(filteredPosts[k].tags) + '</section>\
+        </article>';
+      }
+    }
+
+    document.querySelector('#search-result').innerHTML = html;
+  })();
+</script>
