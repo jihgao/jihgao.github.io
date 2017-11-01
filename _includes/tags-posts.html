@@ -2,7 +2,7 @@
   {% for post in site.posts %}
     {% if post.tags contains include.tag %}
     {% assign has_post = true %}
-    {% include post-full.html post=post %}
+    {% include post-list.html post=post %}
     {% endif %}
   {% endfor %}
   {% if has_post == nil %}

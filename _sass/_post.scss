@@ -1,6 +1,12 @@
-.post-list .post{
-  border-top: 10px solid rgba(71, 171, 212, 0.75);
+.post-list {
+  .post{
+    border-top: 10px solid rgba(71, 171, 212, 0.75);
+  }
+  .post__title{
+    margin-top: 0;
+  }
 }
+
 .post{
   background: rgba(255, 255, 255, 0.70);
   padding: 15px;
@@ -12,8 +18,7 @@
   top: 0;
   right: 1rem;
   padding: 0.5rem;
-  color: rgba(0,0,0,0.1);
-  font-weight: bolder;
+  color: rgba(0, 0, 0, 0.4);
   font-size: 1.5rem;
 }
 .post__title{
@@ -22,6 +27,7 @@
   font-weight: bold;
   text-align: center;
   font-size: 3rem;
+  margin-bottom: 2rem;
   &:hover{
     text-decoration: none;
   }
