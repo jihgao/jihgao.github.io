@@ -1,0 +1,21 @@
+---
+layout: default
+---
+
+{% raw %}
+<div id="pockets">
+  <ul class="pocket-list">
+     <li class="pocket-item" v-if="pocket.title && pocket.excerpt"  v-for="pocket in pockets" v-if='pockets.length' key="pocket.item_id">
+        <h3><a v-bind:href="pocket.url" target="_blank">{{pocket.title}}</a></h3>
+        <p>{{pocket.excerpt}}</p>
+      </li>
+      <li class="pocket-item" v-if='pockets.length'>
+        <a class="pocket-more" v-on:click="loadMore()">more</a>
+      </li>
+  </ul>
+</div>
+{% endraw %}
+
+
+<script src="/scripts/vue.js" type="text/javascript"></script>
+<script src="/scripts/pockets.js"  type="text/javascript"></script>

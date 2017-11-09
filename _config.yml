@@ -59,10 +59,7 @@ rss_url: /feed.xml
 permalink: /:title/
 
 paginate: 10
-
-
-nav_type: tag
-post_view: card
+paginate_path: "/blog/page:num/"
 
 version: v1.1.0
 markdown: kramdown
