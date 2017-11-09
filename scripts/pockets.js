@@ -1,7 +1,7 @@
 var db;
 var pockets = [];
 var store = localforage.createInstance({
-  name: "pockets"
+  name: "webhulu.com"
 });
 var vm = new Vue({
   el: '#pockets',
