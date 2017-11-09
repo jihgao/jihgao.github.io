@@ -1,5 +1,6 @@
 #sidebar{
-  background: rgba(247, 247, 247, 0.52);
+  // background: rgba(247, 247, 247, 0.52);
+  background: #fff;
 }
 #showmenu{
   position: fixed;
@@ -41,7 +42,8 @@
     .navigation{
       // display: flex;
       width: 100vw;
-      background: rgb(243, 249, 255);
+      // background: rgb(243, 249, 255);
+      background: #fff;
       list-style: none;
       margin: 0;
       height: 100%;
