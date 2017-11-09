@@ -4,16 +4,16 @@ layout: default
 
 {% raw %}
 <div id="pockets">
-  <ul class="pocket-list">
-     <li class="pocket-item" v-if="pocket.title && pocket.excerpt"  v-for="pocket in pockets" v-if='pockets.length' key="pocket.item_id">
-        <h3><a v-bind:href="pocket.url" target="_blank">{{pocket.title}}</a></h3>
-        <p>{{pocket.excerpt}}</p>
+  <img class="loading" v-if="!pockets.length" src="/images/loading.svg">
+  <ul class="pocket-list" v-bind:class="{'pocket-list--show': pockets.length}">
+     <li class="pocket-item" v-if="pocket.title && pocket.excerpt"  v-for="pocket in pockets" key="pocket.item_id">
+        <h3><a v-bind:href="pocket.url" target="_blank" v-text="pocket.title"></a></h3>
+        <p v-text="pocket.excerpt"></p>
       </li>
-      <li class="pocket-item" v-if='pockets.length'>
+      <li class="pocket-item">
         <a class="pocket-more" v-on:click="loadMore()">more</a>
       </li>
   </ul>
-  <img class="loading" v-if="!pockets.length" src="/images/loading.svg">
 </div>
 {% endraw %}
 
