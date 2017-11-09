@@ -23,6 +23,7 @@ var vm = new Vue({
   }
 });
 window.onload = function() {
+  getItems();
   var myRequest = new Request('/pockets.json');
   fetch(myRequest).then(function(response) {
     return response.json();
