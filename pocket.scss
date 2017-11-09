@@ -1,5 +1,20 @@
 ---
 ---
+
+#pockets{
+  position: relative;
+  min-height: 100vh;
+}
+
+.loading{
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 20%;
+  left:0;
+  right:0;
+  margin: 0 auto;
+}
 .pocket-list{
     display: flex;
     list-style: none;

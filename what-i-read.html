@@ -13,9 +13,11 @@ layout: default
         <a class="pocket-more" v-on:click="loadMore()">more</a>
       </li>
   </ul>
+  <img class="loading" v-if="!pockets.length" src="/images/loading.svg">
 </div>
 {% endraw %}
 
 
+<script src="/scripts/localforage.min.js" type="text/javascript"></script>
 <script src="/scripts/vue.js" type="text/javascript"></script>
 <script src="/scripts/pockets.js"  type="text/javascript"></script>

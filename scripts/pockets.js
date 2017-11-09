@@ -1,59 +1,9 @@
 var db;
 var pockets = [];
-window.onload = function() {
-  window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
-  window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
-  window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
-  var DBOpenRequest = window.indexedDB.open("webhulu", 4);
-  DBOpenRequest.onsuccess = function(event) {
-    db = DBOpenRequest.result;
-    var objectStore = db.transaction("pockets").objectStore("pockets");
-
-    objectStore.transaction.oncomplete = function(event) {
-      var myRequest = new Request('/pockets.json');
-      fetch(myRequest).then(function(response) {
-        return response.json();
-      }).then(function(response) {
-        var customerObjectStore = db.transaction("pockets", "readwrite").objectStore("pockets");
-        for (var i in response) {
-          (function(item){
-            customerObjectStore.get(item.item_id).onsuccess = function(event) {
-              if( !event.target.result ){
-                customerObjectStore.add(item);
-              }
-            };
-            customerObjectStore.get(item.item_id).onerror = function(){
-              customerObjectStore.add(item);
-            }
-          })(response[i]);
-        }
-      });
-    };
-
-
-    var objectStore2 = db.transaction("pockets").objectStore("pockets");
-    objectStore2.openCursor().onsuccess = function(event) {
-      var cursor = event.target.result;
-      if (cursor) {
-        if( cursor.value.title && cursor.value.excerpt ){
-          pockets.push(cursor.value);
-        }
-        cursor.continue();
-      }
-    };
-  };
-  DBOpenRequest.onupgradeneeded = function(event) {
-    var db = event.target.result;
-    var objectStore = db.createObjectStore("pockets", { keyPath: "item_id" });
-    objectStore.createIndex("url", "url", { unique: false });
-    objectStore.createIndex("title", "title", { unique: false });
-    objectStore.createIndex("excerpt", "excerpt", { unique: false });
-    objectStore.createIndex("item_id", "item_id", { unique: true });
-  };
-}
-
-
-new Vue({
+var store = localforage.createInstance({
+  name: "pockets"
+});
+var vm = new Vue({
   el: '#pockets',
   data: {
     offset_end: 11,
@@ -72,3 +22,39 @@ new Vue({
     }
   }
 });
+window.onload = function() {
+  var myRequest = new Request('/pockets.json');
+  fetch(myRequest).then(function(response) {
+    return response.json();
+  }).then(function(response) {
+    let i=0, cnt = response.length;
+    save(0, cnt-1, response);
+  });
+}
+
+function save(offset, maxOffset, list){
+  if( offset < maxOffset){
+      return store.getItem(list[offset].item_id).then(function(value){
+        if( !value ){
+          return store.setItem(list[offset].item_id, list[offset], function(){
+            return save(++offset, maxOffset, list);
+          });
+        }else{
+          return save(++offset, maxOffset, list);
+        }
+    });
+  }else{
+    getItems();
+  }
+}
+
+function getItems(){
+  var items = [];
+  store.iterate(function(value, key, iterationNumber) {
+    if( value && value.url && value.excerpt ){
+      items.push(value);
+    }
+  }).then(function(result) {
+    vm.$data.db = items;
+  });
+}
