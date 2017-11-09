@@ -112,6 +112,9 @@
     border-left: none;
     border-right: none;
     border-top: none;
+    border-radius: 0;
+    box-shadow: none;
+    
     &:last-child{
       margin-bottom: 0;
       min-height: 5rem;
