@@ -17,6 +17,20 @@ layout: default
 </div>
 {% endraw %}
 
+<script src="https://s3.amazonaws.com/stitch-sdks/js/library/v2/stable/stitch.min.js"></script>
+<script>
+  const client = new stitch.StitchClient('pocket-shadow-lupfq');
+  const db = client.service('mongodb', 'mongodb-atlas').db('pocket');
+  client.login().then(()=>
+    db.collection('articles').find().limit(10).execute()
+  ).then(docs => {
+    console.log("Found docs", docs)
+    console.log("[MongoDB Stitch] Connected to Stitch")
+  }).catch(err => {
+    console.error(err)
+  });
+</script>
+
 
 <script src="/scripts/localforage.min.js" type="text/javascript"></script>
 <script src="/scripts/vue.js" type="text/javascript"></script>
