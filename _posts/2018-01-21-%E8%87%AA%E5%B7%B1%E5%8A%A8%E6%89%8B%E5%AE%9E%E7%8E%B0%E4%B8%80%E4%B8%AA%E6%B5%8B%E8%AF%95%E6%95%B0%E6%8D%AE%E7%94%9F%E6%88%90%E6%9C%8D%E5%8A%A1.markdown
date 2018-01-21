@@ -1,0 +1,87 @@
+---
+layout: post
+title: "自己动手实现一个测试数据生成服务"
+date: "2018-01-21 22:16:56 +0800"
+---
+
+在前端开发的过程中经常会遇到后端API完成之前需要造测试数据以进行前端页面逻辑的开发工作，但是目前大多数情况下都需要我们手动去制作相应的json文件，但是单纯制作相应的接口文件还不够，还需要跟我们的逻辑做集成。一般集成的做法有几种：
+
+
+第一种是直接在代码中使用常量代替API接口获取数据的过程。 这种后期在API完成之后还需要做相应的集成工作，不利于提高工作效率。
+
+还有一种就是使用测试数据的代理服务器，前端目前比较常见的可能是使用nodejs来做这种简单的服务。
+
+其实无论以上两种中的哪一种都逃不开手动设计每一条测试数据，包括字段名字、字段值。这种工作是比较乏味无趣的、而且是很繁琐的。所以我就想如果能够有这样一个服务，可以根据一定的表达式直接给我生成我想要的测试数据那该是一件多好的事情！
+
+本着自己动手丰衣足食的理念，说话不如行动，我就自己写了一个服务，并发布到了heroku上。
+
+地址在： <https://cryptic-ridge-84808.herokuapp.com>
+
+这个服务目前其实就是一个GET请求，仅支持一个参数就是seed(测试数据的种子结构)
+
+seed的参数值形式为: <字段1>:<数据类型=number|string|array|object>,<字段2>:<数据类型=number|string|array|object>
+
+> 需要注意的是如果数据的类型为array的话，整个的数据类型的表达式应该是 array(<数据长度>)[<数据类型1>,<数据类型2>];如果数据类型为object的话，整个的数据类型的表达式应该是 object{<属性1>:<数据类型=number|string|array|object>,<属性2>:<数据类型=number|string|array|object>}, 不难看出数据类型为object的，服务会将{}之间的内容当作嵌套一级的表达式进行解析。
+
+下面写一个实际的例子可能大家更容易理解一些：
+
+如果我们要生成：
+
+```
+{
+  id: 1,
+  name: 'name',
+  category: {
+    id: 1,
+    name: "catename"
+  },
+  data: [
+    1,
+    2,
+    3,
+    4
+  ]
+}
+```
+
+如果生成这样的数据， 那直接请求链接 <a href="https://cryptic-ridge-84808.herokuapp.com?seed=id:number,name:string,category:object{id:number,name:string},data:array(4)[number]" target="_blank">https://cryptic-ridge-84808.herokuapp.com?seed=id:number,name:string,category:object{id:number,name:string},data:array(4)[number]</a>
+
+
+<iframe height="300" border="0" style="width: 100%; background: white; color: white; border: 1px solid #ededed;" src="https://cryptic-ridge-84808.herokuapp.com?seed=id:number,name:string,category:object{id:number,name:string},data:array(4)[number]"></iframe>
+
+
+数据目前只支持统一的元素数据类型
+
+
+比如
+
+所有数据类型是数字型的：
+
+<a href="https://cryptic-ridge-84808.herokuapp.com?seed=data:array(5)[number]" target="_blank">https://cryptic-ridge-84808.herokuapp.com?seed=data:array(5)[number]</a>
+
+
+<iframe height="300" border="0" style="width: 100%; background: white; color: white; border: 1px solid #ededed;" src="https://cryptic-ridge-84808.herokuapp.com?seed=data:array(5)[number]"></iframe>
+
+
+
+
+所有数据类型是字符串型的：
+
+<a href="https://cryptic-ridge-84808.herokuapp.com?seed=data:array(5)[string]" target="_blank">https://cryptic-ridge-84808.herokuapp.com?seed=data:array(5)[string]</a>
+
+
+<iframe height="300" border="0" style="width: 100%; background: white; color: white; border: 1px solid #ededed;" src="https://cryptic-ridge-84808.herokuapp.com?seed=data:array(5)[string]"></iframe>
+
+
+或者所有数据类型是对象形式的也可以：
+
+<a href="https://cryptic-ridge-84808.herokuapp.com?seed=data:array(5)[object{name:string,category:number}]" target="_blank">https://cryptic-ridge-84808.herokuapp.com?seed=data:array(5)[object{name:string,category:number}]</a>
+
+
+<iframe height="300" border="0" style="width: 100%; background: white; color: white; border: 1px solid #ededed;" src="https://cryptic-ridge-84808.herokuapp.com?seed=data:array(5)[object{name:string,category:number}]"></iframe>
+
+
+目前仅支持简单的数据结构的解析，字符串用的是简单的随机names取的，数据也是简单的随机数字。
+
+
+如果大家有什么好的建议，可以给我留言告诉我。
