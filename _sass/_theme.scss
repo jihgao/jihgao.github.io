@@ -20,3 +20,24 @@ code{
   margin-top: 30px;
   margin-right: 15px;
 }
+
+.template-list{
+  display: flex;
+  margin: 1rem auto;
+  justify-content: left;
+}
+.template-list__item{
+  flex: 1;
+  max-width: 25%;
+  min-width: 160px;
+}
+.template-list__item + .template-list__item{
+  margin-left: 2rem;
+}
+.template-list__link{
+  display: block;
+  width: 100%;
+}
+.template-list__thumbnail{
+  width: 100%;
+}
