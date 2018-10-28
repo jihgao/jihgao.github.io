@@ -9,3 +9,7 @@
 @import "theme";
 @import "layout";
 @import "search";
+
+#sidebar + iframe{
+  display: none;
+}
