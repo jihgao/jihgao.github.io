@@ -13,7 +13,7 @@ layout: default
         </header>
         <section class="post__content">
           <p v-text="pocket.excerpt" style="line-height: 1.5;"></p>
-          <p class="text-right"> <a v-bind:href="pocket.resolved_url"><span>阅读原文 &raquo; </span></a></p>
+          <p class="text-right"> <a v-bind:href="pocket.resolved_url" target="_blank"><span>阅读原文 &raquo; </span></a></p>
           <hr>
           <dl class="post-tags" v-if="pocket.tags">
             <dd class="post-tags__label">标签:</dd>
