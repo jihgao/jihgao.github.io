@@ -5,7 +5,7 @@ var store = localforage.createInstance({
 });
 window.AV.init('LK2HVhuVJrNVf0yJnST2TVNb-gzGzoHsz', 'KNyncdaxOVjveO3PmJXmBthl');
 var Post = window.AV.Object.extend('article');
-
+var pageSize = 50;
 var vm = new Vue({
   el: '#pockets',
   data: {
@@ -27,7 +27,7 @@ var vm = new Vue({
       this.loading = true;
       return Post.query
         .skip(me.offset_end)
-        .limit(10)
+        .limit(pageSize)
         .exists('excerpt')
         .exists('givenTitle')
         .notEqualTo('excerpt', '')
@@ -45,7 +45,7 @@ var vm = new Vue({
     loadMore: function(){
       if(this.loading){ return false;}
       let offset_end = this.offset_end;
-      offset_end +=  12;
+      offset_end += (pageSize + 2);
       this.offset_end = offset_end;
       this.loadData();
     }
@@ -65,13 +65,13 @@ var vm = new Vue({
   }
 });
 
-$(function () {
-  $(window).on('scroll', function () {
-    if($('#pocket-load-more:in-viewport').length){
-      vm.loadMore();
-    };
-  })
-});
+// $(function () {
+//   $(window).on('scroll', function () {
+//     if($('#pocket-load-more:in-viewport').length){
+//       vm.loadMore();
+//     };
+//   });
+// });
 
 function save(offset, maxOffset, list){
   if( offset < maxOffset){
