@@ -8,18 +8,18 @@ layout: default
   <div class="post-list" v-bind:class="{'pocket-list--show': pockets.length}">
       <article class="post" v-if="pocket.given_title && pocket.excerpt" v-for="pocket in pockets" key="pocket.resolved_id">
         <header>
-          <h1 class="post__title"><a v-bind:href="pocket.resolved_url" target="_blank" v-text="pocket.given_title"></a></h1>
+          <h1 class="post__title"><a v-bind:href="pocket.resolvedUrl" target="_blank" v-text="pocket.givenTitle"></a></h1>
           <small class="post__created" class="pocket-published-time" v-text='new Date(pocket.createdAt).toLocaleString()'></small>
         </header>
         <section class="post__content">
           <p v-text="pocket.excerpt" style="line-height: 1.5;"></p>
-          <p class="text-right"> <a v-bind:href="pocket.resolved_url" target="_blank"><span>阅读原文 &raquo; </span></a></p>
-          <hr>
-          <dl class="post-tags" v-if="pocket.tags">
+          <p class="text-right"> <a v-bind:href="pocket.resolvedUrl" target="_blank"><span>阅读原文 &raquo; </span></a></p>
+          <!-- <hr> -->
+          <!-- <dl class="post-tags" v-if="pocket.tags">
             <dd class="post-tags__label">标签:</dd>
             <dt class="post-tags__item" v-if='tag' v-for="tag in pocket.tags"><span class="text-muted post-tags__item--link"
                 v-text="tag.tag"></span></dt>
-          </dl>
+          </dl> -->
         </section>
       </article>
 

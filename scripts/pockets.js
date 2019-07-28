@@ -4,7 +4,7 @@ var store = localforage.createInstance({
   name: "webhulu.com"
 });
 window.AV.init('LK2HVhuVJrNVf0yJnST2TVNb-gzGzoHsz', 'KNyncdaxOVjveO3PmJXmBthl');
-var Post = window.AV.Object.extend('articles');
+var Post = window.AV.Object.extend('article');
 
 var vm = new Vue({
   el: '#pockets',
@@ -29,9 +29,9 @@ var vm = new Vue({
         .skip(me.offset_end)
         .limit(10)
         .exists('excerpt')
-        .exists('given_title')
+        .exists('givenTitle')
         .notEqualTo('excerpt', '')
-        .notEqualTo('given_title', '')
+        .notEqualTo('givenTitle', '')
         .find()
         .then(function (response) {
           const newArticles = response.map(function (record) {
@@ -91,12 +91,12 @@ function save(offset, maxOffset, list){
 
 function getItems(){
   var items = [];
-  store.iterate(function(value, key, iterationNumber) {
+  store.iterate(function(value) {
     console.error(value);
-    if( value && value.url && value.excerpt ){
+    if( value && value.resolvedUrl && value.excerpt ){
       items.push(value);
     }
-  }).then(function(result) {
+  }).then(function() {
     vm.$data.db = items;
   });
 }
