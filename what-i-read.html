@@ -6,7 +6,7 @@ layout: default
 <div id="pockets">
   <img class="loading" v-if="!pockets.length" src="/images/loading.svg">
   <div class="post-list" v-bind:class="{'pocket-list--show': pockets.length}">
-      <article class="post" v-if="pocket.given_title && pocket.excerpt" v-for="pocket in pockets" key="pocket.resolved_id">
+      <article class="post" v-if="pocket.givenTitle && pocket.excerpt" v-for="pocket in pockets" key="pocket.resolvedId">
         <header>
           <h1 class="post__title"><a v-bind:href="pocket.resolvedUrl" target="_blank" v-text="pocket.givenTitle"></a></h1>
           <small class="post__created" class="pocket-published-time" v-text='new Date(pocket.createdAt).toLocaleString()'></small>
