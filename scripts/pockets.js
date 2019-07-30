@@ -65,13 +65,13 @@ var vm = new Vue({
   }
 });
 
-// $(function () {
-//   $(window).on('scroll', function () {
-//     if($('#pocket-load-more:in-viewport').length){
-//       vm.loadMore();
-//     };
-//   });
-// });
+$(function () {
+  $(window).on('scroll', function () {
+    if($('#pocket-load-more:in-viewport').length){
+      vm.loadMore();
+    };
+  });
+});
 
 function save(offset, maxOffset, list){
   if( offset < maxOffset){
