@@ -90,3 +90,7 @@ exclude:
   - LICENSE
   - README.md
   - CNAME
+  - src
+  - node_modules
+  - scripts
+  - public
