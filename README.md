@@ -1,2 +1,0 @@
-## mathjax
-## mermaid
