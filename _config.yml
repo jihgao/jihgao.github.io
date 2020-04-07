@@ -94,3 +94,4 @@ exclude:
   - node_modules
   - scripts
   - public
+  - config
