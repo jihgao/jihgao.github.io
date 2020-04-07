@@ -1,5 +1,14 @@
 import React, {useRef, useEffect} from 'react';
-import { editor } from "monaco-editor";
+import message from 'antd/lib/message';
+import { editor, KeyMod, KeyCode } from "monaco-editor";
+import zhCN from 'antd/es/locale/zh_CN';
+import 'antd/lib/message/style/index.css';
+
+message.config({
+  top: 20,
+  duration: 2,
+  maxCount: 1
+});
 
 function MyEditor(props){
   const container = useRef(null);
@@ -27,8 +36,14 @@ function MyEditor(props){
       _model.onDidChangeContent(() => {
         props.onChange(_model.getValue());
       });
+      _editor.addCommand(KeyMod.CtrlCmd | KeyCode.KEY_S, function () {
+        window.localStorage.setItem('cached', _model.getValue());
+        message.info('已保存');
+      });
   }, [props.value]);
-  return <div className="editor" ref={container}/>
+  return (
+    <div className="editor" ref={container}/>
+  );
 }
 
 export default MyEditor;

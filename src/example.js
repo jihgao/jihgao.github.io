@@ -1,4 +1,4 @@
-export default `# 目录
+const defaultExample = `# 目录
 [TOC]
 
 ## 方程
@@ -24,3 +24,4 @@ sequenceDiagram
     李四-->>赵六: 好的不能再好了！
 \`\`\`
 `;
+export default window.localStorage.getItem('cached') || defaultExample;
