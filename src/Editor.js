@@ -1,7 +1,6 @@
 import React, {useRef, useEffect} from 'react';
 import message from 'antd/lib/message';
 import { editor, KeyMod, KeyCode } from "monaco-editor";
-import zhCN from 'antd/es/locale/zh_CN';
 import 'antd/lib/message/style/index.css';
 
 message.config({
@@ -12,6 +11,7 @@ message.config({
 
 function MyEditor(props){
   const container = useRef(null);
+  const { onChange } = props;
   useEffect(() => {
       const _editor = editor.create(container.current, {
         value: props.value,
@@ -34,13 +34,23 @@ function MyEditor(props){
       });
       const _model = _editor.getModel();
       _model.onDidChangeContent(() => {
-        props.onChange(_model.getValue());
+        onChange(_model.getValue());
       });
-      _editor.addCommand(KeyMod.CtrlCmd | KeyCode.KEY_S, function () {
+      function saveCache(){
         window.localStorage.setItem('cached', _model.getValue());
         message.info('已保存');
-      });
-  }, [props.value]);
+      }
+      _editor.addCommand(KeyMod.CtrlCmd | KeyCode.KEY_S, saveCache);
+      function handleMessage(evt){
+        if(evt.data.id === 'menu.save'){
+          saveCache();
+        }
+      }
+      window.addEventListener('message', handleMessage);
+     return () => {
+        window.removeEventListener('message', handleMessage);
+      };
+  }, [props.value, onChange]);
   return (
     <div className="editor" ref={container}/>
   );

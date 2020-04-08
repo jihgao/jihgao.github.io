@@ -53,6 +53,11 @@ function PreviewComponent(props) {
   const ele = useRef(null);
   const shadow = useRef(null);
   const { source } = props;
+  function handleMessage(evt){
+    if(evt.data.id === 'menu.saveAs'){
+       window.print();
+    }
+  }
   useEffect(() => {
       const render = (cb = () => {}) => {
           const offcanvas = document.querySelector("#offcanvas");
@@ -109,6 +114,10 @@ function PreviewComponent(props) {
       } else {
         render();
       }
+      window.addEventListener('message', handleMessage);
+      return () => {
+        window.removeEventListener('message', handleMessage);
+      };
   }, [source, loaded]);
   return (
     <div className="preview">
