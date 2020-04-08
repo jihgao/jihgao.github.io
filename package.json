@@ -39,6 +39,7 @@
     "jest-environment-jsdom-fourteen": "1.0.1",
     "jest-resolve": "24.9.0",
     "jest-watch-typeahead": "0.4.2",
+    "lodash": "^4.17.15",
     "markdown-it": "^10.0.0",
     "markdown-it-table-of-contents": "^0.4.4",
     "markdown-linkify": "^1.0.3",

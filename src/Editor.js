@@ -1,4 +1,5 @@
 import React, {useRef, useEffect} from 'react';
+import  {debounce} from 'lodash';
 import message from 'antd/lib/message';
 import { editor, KeyMod, KeyCode } from "monaco-editor";
 import 'antd/lib/message/style/index.css';
@@ -23,9 +24,9 @@ function MyEditor(props){
         fontSize: 20,
         lineNumbers: "on",
         automaticLayout: false,
-        quickSuggestions: true,
-        occurrencesHighlight: true,
-        colorDecorators: true,
+        quickSuggestions: false,
+        occurrencesHighlight: false,
+        colorDecorators: false,
         wordWrap: true,
         theme: "vs-dark",
         minimap: {
@@ -33,9 +34,9 @@ function MyEditor(props){
         }
       });
       const _model = _editor.getModel();
-      _model.onDidChangeContent(() => {
+      _model.onDidChangeContent(debounce(() => {
         onChange(_model.getValue());
-      });
+      }, 500));
       function saveCache(){
         window.localStorage.setItem('cached', _model.getValue());
         message.info('已保存');

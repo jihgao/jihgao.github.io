@@ -100,7 +100,7 @@ function PreviewComponent(props) {
           }
       };
       if (!loaded){
-        loadScripts(
+        !document.querySelector('#MathJax-script') && loadScripts(
           [
             ["https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML",        {
             async: true,
