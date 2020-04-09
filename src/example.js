@@ -115,5 +115,30 @@ pie
     "Iron" :  5
 \`\`\`
 
+## Fundament
+# H1
+## H2
+### H3
+#### H4
+##### H5
+### ordered list
+1. item1
+1. item2
+
+### unordered list
+- unorder item1
+- unorder item2
+
+### Table
+name | 价格 |  数量  
+-|-:|-
+香蕉 | $1 | 5 |
+苹果 | $1 | 6 |
+草莓 | $1 | 7 |
+
+### Link
+
+[Home Page](https://www.moki-life.com/mk)
+
 `;
 export default window.localStorage.getItem('cached') || defaultExample;
