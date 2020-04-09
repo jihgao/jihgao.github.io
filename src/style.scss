@@ -42,7 +42,7 @@ html,body,
   top:var(--menu-height);
   display: flex;
   justify-content: space-between;
-  height: 100%;
+  height: calc(100% - var(--menu-height));
 }
 .menu{
   height: var(--menu-height);
