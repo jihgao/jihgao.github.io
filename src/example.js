@@ -130,11 +130,11 @@ pie
 - unorder item2
 
 ### Table
-name | 价格 |  数量  
+name | price | amount 
 -|-:|-
-香蕉 | $1 | 5 |
-苹果 | $1 | 6 |
-草莓 | $1 | 7 |
+one | $1 | 5 |
+two | $1 | 6 |
+three | $1 | 7 |
 
 ### Link
 
