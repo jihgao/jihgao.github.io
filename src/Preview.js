@@ -16,7 +16,7 @@ const md = new MarkdownIt({
   quotes: "“”‘’"
 });
 
-md.use(tocPlugin, { includeLevel: [2], markerPattern: /^\[toc\]/im });
+md.use(tocPlugin, { includeLevel: [2,3], markerPattern: /^\[toc\]/im });
 
 const config = {
   showProcessingMessages: false, 

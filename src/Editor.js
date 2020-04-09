@@ -37,19 +37,24 @@ function MyEditor(props){
       _model.onDidChangeContent(debounce(() => {
         onChange(_model.getValue());
       }, 500));
-      function saveCache(){
-        window.localStorage.setItem('cached', _model.getValue());
-        message.info('已保存');
-      }
       _editor.addCommand(KeyMod.CtrlCmd | KeyCode.KEY_S, saveCache);
+      function saveCache() {
+        window.localStorage.setItem('cached', _model.getValue());
+        message.info('Saved');
+      }
       function handleMessage(evt){
         if(evt.data.id === 'menu.save'){
           saveCache();
         }
       }
+      function handleResize(){
+        _editor.layout(container.current.getBoundingClientRect())
+      }
+      window.addEventListener('resize', handleResize);
       window.addEventListener('message', handleMessage);
      return () => {
         window.removeEventListener('message', handleMessage);
+        window.removeEventListener('resize', handleResize);
       };
   }, [props.value, onChange]);
   return (
