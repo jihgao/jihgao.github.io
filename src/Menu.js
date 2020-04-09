@@ -16,10 +16,10 @@ function Menu(props) {
   const menu = (
   <AntdMenu>
     <AntdMenu.Item key="0">
-      <a href="/#" onClick={(e) => e.preventDefault() && runCMD('menu.saveAs')}>打印</a>
+      <a href="/#" onClick={(e) => e.preventDefault() || runCMD('menu.saveAs')}>打印</a>
     </AntdMenu.Item>
     <AntdMenu.Item key="1">
-      <a href="/#" onClick={(e) => e.preventDefault() && runCMD('menu.save')}>保存</a>
+      <a href="/#" onClick={(e) => e.preventDefault() || runCMD('menu.save')}>保存</a>
     </AntdMenu.Item>
   </AntdMenu>
 );

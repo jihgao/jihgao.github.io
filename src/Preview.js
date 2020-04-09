@@ -63,41 +63,19 @@ function PreviewComponent(props) {
           const offcanvas = document.querySelector("#offcanvas");
           shadow.current.innerHTML = md.render(linkify(source || ""));
           try {
-            shadow.current.querySelectorAll(".language-flow").forEach($el => {
-              const _div = document.createElement('div');
-              const _id = `chart-${String(Math.random()).replace(".","")}`;
-              _div.setAttribute("id", _id);
-              offcanvas.appendChild(_div);
-              mermaid.mermaidAPI.render(_id, $el.textContent, svgCode => {
-                const parentPre = $el.closest('pre');
-                _div.innerHTML = svgCode;
-                _div.removeAttribute("id");
-                parentPre.parentNode.replaceChild(_div, parentPre);
-              });
+            shadow.current.querySelectorAll(".language-flow").forEach(($el, idx) => {
+              mermaid.mermaidAPI.render(`chart-${idx}`, $el.textContent, svgCode => {
+                $el.innerHTML = svgCode;
+              }, offcanvas);
             });
-            offcanvas.innerHTML = '';
-            if(!loaded){
-              window.MathJax.Hub.Config(config);
-              window.MathJax.Hub.Queue(
-                ["Typeset", window.MathJax.Hub, shadow.current],
-                () => {
-                  ele.current.innerHTML = shadow.current.innerHTML;
-                  cb();
-                }
-              );
-            } else {
-              window.MathJax.Hub.Queue(
-                ["Typeset", window.MathJax.Hub, shadow.current],
-                () => {
-                  ele.current.innerHTML = shadow.current.innerHTML;
-                  cb();
-                }
-              );
-            }
-
-          } catch (error) {
-            console.error(error);
-          }
+            window.MathJax.Hub.Queue(
+              ["Typeset", window.MathJax.Hub, shadow.current],
+              () => {
+                ele.current.innerHTML = shadow.current.innerHTML;
+                cb();
+              }
+            );
+          } catch (err) {}
       };
       if (!loaded){
         !document.querySelector('#MathJax-script') && loadScripts(
@@ -107,6 +85,7 @@ function PreviewComponent(props) {
             id: "MathJax-script"
           }]]
         ).then(() => {
+          window.MathJax.Hub.Config(config);
           render(() => {
             setLoaded(true);
           });
