@@ -115,7 +115,7 @@ html,body,
 }
 .preview__main {
   padding:0 1rem 2rem 1rem;
-  .MJXc-display{
+  mjx-container[jax="SVG"][display="true"]{
     display: inline-block;
   }
   code {
