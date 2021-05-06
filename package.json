@@ -57,8 +57,8 @@
     "postcss-safe-parser": "4.0.1",
     "react": "^16.13.1",
     "react-app-polyfill": "^1.0.6",
-    "react-dom": "^16.13.1",
     "react-dev-utils": ">=11.0.4",
+    "react-dom": "^16.13.1",
     "resolve": "1.15.0",
     "resolve-url-loader": "3.1.1",
     "sass-loader": "8.0.2",
@@ -145,5 +145,9 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "sockjs": "^0.3.20",
+    "ssri": "^6.0.2"
   }
 }
