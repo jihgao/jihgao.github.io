@@ -1,6 +1,6 @@
 "use strict";
 const MongoClient = require('mongodb').MongoClient;
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://jihgao:5Ka4KGQi6ujFeUF@pocket-cluster-w2avi.mongodb.net/pocket'; // or Atlas connection string
+const MONGODB_URI = process.env.MONGODB_URI; // or Atlas connection string
 
 let cachedDb = null;
 
